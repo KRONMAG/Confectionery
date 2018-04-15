@@ -30,6 +30,7 @@ function divProduct(product) {
         "<p>" + product.price + " руб.</p></div>";
 }
 
+//Вычисление длительности анимации
 jQuery.fx.speeds.calculate = function (count) {
     width = $(window).width();
     var coef = 3;
@@ -39,6 +40,7 @@ jQuery.fx.speeds.calculate = function (count) {
     return ((count - mod) / coef + (mod == 0 ? 0 : 1)) * 300;
 }
 
+//Анимация кнопок категории изделий
 function animateCategoryButton(name, dwidth, dheight, color) {
     $('button[name="' + name + '"]').stop(false, true).animate({
         width: dwidth,
@@ -120,8 +122,6 @@ function updateCost() {
     }
 }
 
-var isSubmitted = false;
-
 //Сбор данных о заказе с форм в объект и вывод его содержимого в консоль
 function sendData() {
     isSubmitted = true;
@@ -149,17 +149,7 @@ function clearInput() {
     updateCost();
 }
 
-function notEnterData() {
-    var input = $('input');
-    for (var i = 0; i < input.length; i++)
-        if (!input[i].checkValidity()) {
-            var parent = input[i].parentElement;
-            if ($(parent).queue().length == 0)
-                animateEmptyInput(parent, 5);
-            break;
-        }
-}
-
+//Анимация элементов ввода
 function animateEmptyInput(element, count) {
     if (count > 0) {
         $(element).animate({
@@ -170,5 +160,16 @@ function animateEmptyInput(element, count) {
             animateEmptyInput(element, count - 1)
         });
     }
+}
 
+//Вызов функции анимации для элементов ввода, не прошедших валидацию
+function notEnterData() {
+    var input = $('input');
+    for (var i = 0; i < input.length; i++)
+        if (!input[i].checkValidity()) {
+            var parent = input[i].parentElement;
+            if ($(parent).queue().length == 0)
+                animateEmptyInput(parent, 5);
+            break;
+        }
 }
