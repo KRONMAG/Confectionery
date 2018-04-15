@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная страница</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/jquery.color.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/functions.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="кондитерская, торт, эклер, имбирное печенье, заказ, кондитерское изделие" name="keywords" />
+    <meta content="Изготовление кондитерских изделий на заказ. На сайте представлены различные виды тортов, эклеров, имбирного печенья и других сладостей." name="description" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+
+        .product {
+            height: 500px;
+        }
+
+        img {
+            width: 100%;
+            max-height: 300px;
+            max-width: 300px;
+        }
+
+        .btn-default
+        {
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body style="background-image: url(img/style/background.jpg); background-attachment: fixed">
+    <div class="row">
+        <div class="col-md-12" style="background-image: url(img/style/logo.jpg); min-height: 100px">
+        </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand" style="color: #ffd800">Кондитерская</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Изделия</a></li>
+                    <li><a href="order.html"><span class="glyphicon glyphicon-shopping-cart"></span> Заказать</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-earphone"></span> Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid text-center bg-info text-info">
+        <div class="row-fluid">
+            <div id="categories"class="col-md-12">
+                <button name="Ball" class="btn btn-default btn-size">Все изделия</button>
+                <button name="Bcake"class="btn btn-default btn-size">Торты</button>
+                <button name="Bcookie" class="btn btn-default btn-size">Имбирное печенье</button>
+                <button name="Beclair" class="btn btn-default btn-size">Эклеры</button>
+                <button name="Bcakepop" class="btn btn-default btn-size">Кейк-попсы</button>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div id="products" class="col-md-10 col-md-offset-1">
+
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-default hidden-xs" style="position: fixed; right: 25px; bottom: 25px" onclick="window.scrollTo(0, 0)">Наверх</button>
+	<script>
+ 	showProducts('all');
+ 	buttons = $('#categories>button');
+ 	for (var i = 0; i < buttons.length; i++) {
+ 		let text = buttons[i].name.substring(1, buttons[i].name.length);
+ 		$(buttons[i]).bind('click', function () { showProducts(text); });
+ 	}
+ 	$('button[name="up"]').bind('click', function () { window.scrollTo(0, 0); });
+	</script>
+</body>
+</html>
